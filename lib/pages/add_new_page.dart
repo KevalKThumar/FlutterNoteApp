@@ -69,6 +69,7 @@ class _AddNewNotePageState extends State<AddNewNotePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[100],
       appBar: AppBar(
         title: widget.isUpdate == true
             ? "${widget.note!.title}"
@@ -87,7 +88,7 @@ class _AddNewNotePageState extends State<AddNewNotePage> {
             tooltip: "save",
           ),
         ],
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.blueGrey[900],
         iconTheme: const IconThemeData(
           color: Colors.white,
         ),

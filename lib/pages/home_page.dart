@@ -19,10 +19,11 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     NotesProvider notesProvide = Provider.of<NotesProvider>(context);
     return Scaffold(
+      backgroundColor: Colors.grey[100],
       appBar: AppBar(
         title: "Notes APP".text.white.fontFamily(AutofillHints.jobTitle).make(),
         centerTitle: true,
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.blueGrey[900],
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: notesProvide.isLoding == false
@@ -43,12 +44,16 @@ class _HomePageState extends State<HomePage> {
                               },
                               decoration: const InputDecoration(
                                 hintText: "Search Note",
+                                
                                 border: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Colors.black87, width: 3),
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(5))),
                               ),
                             ),
                           ),
+                          10.heightBox,
                           (notesProvide.getFilterdNote(searchQuery).isNotEmpty)
                               ? GridView.builder(
                                   physics: const NeverScrollableScrollPhysics(),
@@ -87,7 +92,7 @@ class _HomePageState extends State<HomePage> {
                                     )
                                         .box
                                         .white
-                                        .border(width: 2)
+                                        .border(width: 2, color: Colors.black38)
                                         .margin(const EdgeInsets.all(5))
                                         .padding(const EdgeInsets.all(10))
                                         .roundedSM
@@ -139,7 +144,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.blueGrey[900],
         onPressed: () {
           Navigator.push(
             context,
