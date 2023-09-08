@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
@@ -10,6 +11,7 @@ import 'package:note_app/pages/home_page.dart';
 import 'package:note_app/pages/signup_page.dart';
 import 'package:note_app/widget/widget.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 // ignore: must_be_immutable
@@ -47,16 +49,16 @@ class _LoginPageState extends State<LoginPage> {
 // login
   void login(email, password) async {
     var authProvider = Provider.of<AuthProvider>(context, listen: false);
-    User user = User(
-      email: email,
-      password: password,
-      name: "",
-    );
+    User user = User(email: email, password: password, name: "", token: "");
 
-    await authProvider.login(user);
+    var res = (await authProvider.login(user, context));
 
     if (authProvider.isBack) {
-      Navigator.push(
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      // log(jsonDecode(res.body)['token']);
+      await prefs.setString('x-auth-token', jsonDecode(res.body)['token']);
+
+      Navigator.pushReplacement(
           context,
           CupertinoPageRoute(
             builder: (context) => const HomePage(),
@@ -127,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
                     SizedBox(
                       child: GestureDetector(
                         onTap: () {
-                          Navigator.push(
+                          Navigator.pushReplacement(
                               context,
                               CupertinoPageRoute(
                                   builder: (context) => const SignupPage()));

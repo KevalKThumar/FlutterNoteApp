@@ -1,13 +1,16 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 class User {
   String? name;
   String? email;
   String? password;
+  String? token;
   User({
     this.name,
     this.email,
     this.password,
+    this.token,
   });
 
   Map<String, dynamic> toMap() {
@@ -15,6 +18,7 @@ class User {
       'name': name,
       'email': email,
       'password': password,
+      'token': token,
     };
   }
 
@@ -23,6 +27,7 @@ class User {
       name: map['name'] != null ? map['name'] as String : null,
       email: map['email'] != null ? map['email'] as String : null,
       password: map['password'] != null ? map['password'] as String : null,
+      token: map['token'] != null ? map['token'] as String : null,
     );
   }
 

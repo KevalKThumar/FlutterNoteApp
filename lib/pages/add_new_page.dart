@@ -1,5 +1,8 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:note_app/Models/note_model.dart';
+import 'package:note_app/Provider/auth_provider.dart';
 import 'package:note_app/Provider/notes_provide.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
@@ -35,12 +38,14 @@ class _AddNewNotePageState extends State<AddNewNotePage> {
   }
 
   void addNewNote() {
+    AuthProvider authProvider =
+        Provider.of<AuthProvider>(context, listen: false);
     Note newNote = Note(
       id: const Uuid().v1(),
       content: contantController.text,
       dateadded: DateTime.now(),
       title: titleController.text,
-      userid: "thumarkeval",
+      userid: authProvider.user.email,
     );
 
     Provider.of<NotesProvider>(context, listen: false).addNote(newNote);

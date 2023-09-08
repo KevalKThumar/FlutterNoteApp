@@ -43,12 +43,12 @@ class NotesProvider with ChangeNotifier {
         notes.indexOf(notes.firstWhere((element) => element.id == note.id));
     notes.removeAt(indexOfNote);
     sortNotes();
-    notifyListeners();
     ApiService.deleteNode(note);
+    notifyListeners();
   }
 
   void fatchNotes() async {
-    notes = await ApiService.fatchnotes("thumarkeval");
+    notes = await ApiService.fatchnotes();
     sortNotes();
     isLoding = false;
     notifyListeners();

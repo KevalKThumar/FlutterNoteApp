@@ -56,12 +56,13 @@ class _SignupPageState extends State<SignupPage> {
       email: email,
       name: name,
       password: password,
+      token: ''
     );
 
-    await authProvider.signup(user);
+    await authProvider.signup(user, context);
 
     if (authProvider.isBack) {
-      Navigator.push(
+      Navigator.pushReplacement(
           context,
           CupertinoPageRoute(
             builder: (context) => const LoginPage(),
@@ -150,7 +151,7 @@ class _SignupPageState extends State<SignupPage> {
                     5.widthBox,
                     GestureDetector(
                         onTap: () {
-                          Navigator.push(
+                          Navigator.pushReplacement(
                               context,
                               CupertinoPageRoute(
                                   builder: (context) => const LoginPage()));
