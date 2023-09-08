@@ -1,12 +1,10 @@
-// ignore_for_file: use_build_context_synchronously
 
-import 'dart:developer';
+// ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:note_app/Models/user_model.dart';
 import 'package:note_app/Provider/auth_provider.dart';
-import 'package:note_app/pages/home_page.dart';
 import 'package:note_app/pages/login_page.dart';
 import 'package:note_app/widget/widget.dart';
 import 'package:provider/provider.dart';

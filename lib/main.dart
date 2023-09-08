@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:note_app/Provider/auth_provider.dart';
 import 'package:note_app/Provider/notes_provide.dart';
@@ -9,7 +7,6 @@ import 'package:note_app/pages/login_page.dart';
 // import 'package:note_app/pages/home_page.dart';
 // import 'package:note_app/pages/signup_page.dart';
 import 'package:note_app/services/api_service.dart';
-import 'package:note_app/widget/widget.dart';
 import 'package:provider/provider.dart';
 
 void main() {
